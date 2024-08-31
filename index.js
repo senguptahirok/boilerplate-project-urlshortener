@@ -14,6 +14,10 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+app.post('/api/shorturl',function(req,res){
+  res.json({'ip': req.ip});
+});
+
 // Your first API endpoint 
 app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });

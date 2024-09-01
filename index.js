@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const URL = require('url').URL;
+const url = require('url').URL;
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
 app.post('/api/shorturl',function(req,res){
  let originalURL = req.body.url;
- let urlObj = new URL(originalURL);
+ let urlObj = new url(originalURL);
  
  dns.lookup(urlObj.hostname, function(err,data){
    if (err) res.json({error: "invalid URL"});

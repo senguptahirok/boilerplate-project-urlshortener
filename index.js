@@ -20,9 +20,7 @@ app.post('/api/shorturl',function(req,res){
  let urlObj = new URL(originalURL);
  
  dns.lookup(urlObj.hostname, function(err, address, family){
-   if (err){
-     res.json({'original_url':originalURL, 'short_url': "invalid URL"});
-   }
+   if (err) res.json({error: "invalid URL"});
    else{
      let shortURL = Math.floor(Math.random() * 100000).toString();
      let data = new Model({'original_url': originalURL, 'short_url': shortURL});

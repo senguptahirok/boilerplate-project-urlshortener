@@ -19,7 +19,7 @@ app.post('/api/shorturl',function(req,res){
  let originalURL = req.body.url;
  let urlObj = new URL(originalURL);
  
- dns.lookup(urlObj.hostname, function(err, address, family){
+ dns.lookup(urlObj.hostname, function(err,data){
    if (err) res.json({error: "invalid URL"});
    else{
      let shortURL = Math.floor(Math.random() * 100000).toString();

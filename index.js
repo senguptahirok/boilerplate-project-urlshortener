@@ -15,11 +15,13 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+app.use(url());
+
 app.post('/api/shorturl',function(req,res){
  let originalURL = req.body.url;
  let urlObj = new url(originalURL);
  
- dns.lookup(urlObj.hostname, function(err,data){
+  dns.lookup(urlObj.hostname, function(err,data){
    if (err) res.json({error: "invalid URL"});
    else{
      let shortURL = Math.floor(Math.random() * 100000).toString();

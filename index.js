@@ -18,8 +18,12 @@ app.get('/', function(req, res) {
 //app.use(url());
 
 app.post('/api/shorturl',function(req,res){
-  let originalURL = req.url;
   let shortURL = ' ';
+  let originalURL = ' ';
+    dns.lookup(host,function(req,res){
+    originalURL = host;
+  });
+  
   res.json({'original_url': originalURL, 'short_url': shortURL});
 });
 

@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 //app.use(url());
 
 app.post('/api/shorturl',function(req,res){
-  let originalURL = ' ';
+  let originalURL = req.url;
   let shortURL = ' ';
   res.json({'original_url': originalURL, 'short_url': shortURL});
 });

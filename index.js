@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const url = require('url').URL;
+//const url = require('url').URL;
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -15,23 +15,12 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-app.use(url());
+//app.use(url());
 
 app.post('/api/shorturl',function(req,res){
- let originalURL = req.body.url;
- let urlObj = new url(originalURL);
- 
-  dns.lookup(urlObj.hostname, function(err,data){
-   if (err) res.json({error: "invalid URL"});
-   else{
-     let shortURL = Math.floor(Math.random() * 100000).toString();
-     let data = new Model({'original_url': originalURL, 'short_url': shortURL});
-     data.save(function(err,data){
-      if (err) return console.error(err);
-     });
-     res.json({'original_url': originalURL, 'short_url': shortURL});
-   }
- }); 
+  let originalURL = ' ';
+  let shortURL = ' ';
+  res.json({'original_url': originalURL, 'short_url': shortURL});
 });
 
 // Your first API endpoint 

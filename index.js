@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-//const url = require('url').URL;
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -15,15 +15,14 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-//app.use(url());
-
+app.use(bodyParser.urlencoded({ extended: true}));
 app.post('/api/shorturl',function(req,res){
   let shortURL = ' ';
   let originalURL = ' ';
   console.log('body parser = '+ req.body);
-    req.dns.lookup(host,function(req,res){
-    originalURL = host;
-  });
+/*    req.dns.lookup(host,function(req,res){
+    originalURL = host; 
+  }); */
   
   res.json({'original_url': originalURL, 'short_url': shortURL});
 });

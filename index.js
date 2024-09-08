@@ -20,6 +20,7 @@ app.get('/', function(req, res) {
 app.post('/api/shorturl',function(req,res){
   let shortURL = ' ';
   let originalURL = ' ';
+  console.log('body parser = '+ req.body);
     req.dns.lookup(host,function(req,res){
     originalURL = host;
   });

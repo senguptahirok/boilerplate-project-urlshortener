@@ -15,10 +15,13 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false}));
+
 app.post('/api/shorturl',function(req,res){
   let shortURL = ' ';
   let originalURL = ' ';
+  let urlEncodedBody = bodyParser.urlencoded({extended: false});
+  console.log('urlEncodedBody = ' + urlEncodedBody);
   console.log('body parser = '+ req.body);
 /*    req.dns.lookup(host,function(req,res){
     originalURL = host; 

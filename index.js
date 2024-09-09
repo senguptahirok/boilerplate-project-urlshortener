@@ -20,9 +20,9 @@ let urlEncodedBody = bodyParser.urlencoded({extended: false});
 console.log('urlEncodedBody = ' + urlEncodedBody);
 
 app.post('/api/shorturl',function(req,res){
-  let shortURL = ' ';
-  let originalURL = ' ';
-  console.log('body parser = '+ req.body);
+  let shortURL = 'empty';
+  let originalURL = 'empty';
+//  console.log('body parser = '+ req.body);
 /*    req.dns.lookup(host,function(req,res){
     originalURL = host; 
   }); */

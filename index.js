@@ -17,12 +17,12 @@ app.get('/', function(req, res) {
 
 app.use(bodyParser.urlencoded({ extended: false}));
 let urlEncodedBody = bodyParser.urlencoded({extended: false});
-console.log('urlEncodedBody = ' + urlEncodedBody);
+//console.log('urlEncodedBody = ' + urlEncodedBody);
 
 app.post('/api/shorturl',function(req,res){
   let shortURL = 'empty';
   let originalURL = 'empty';
-//  console.log('body parser = '+ req.body);
+  console.log('body parser (req._body) = '+ req._body);
 /*    req.dns.lookup(host,function(req,res){
     originalURL = host; 
   }); */

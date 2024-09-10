@@ -1,12 +1,18 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const dns = require('dns');
 const cors = require('cors');
 const app = express();
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
-
+/* Important Notes for self understanding
+  These are the steps that are being followed in this task:
+  1. To parse the URL in POST function, using body-parser package. The body-parser needs to be installed in the root directory, if 
+  it is not installed earlier. 'npm install body-parser' is the command for installation of body-parser package.
+  2. validate the url and return a short url using dsn.lookup method.
+*/
 app.use(cors());
       
 app.use('/public', express.static(`${process.cwd()}/public`));
@@ -15,19 +21,22 @@ app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-app.use(bodyParser.urlencoded({ extended: false}));
-let urlEncodedBody = bodyParser.urlencoded({extended: false});
+app.use(bodyParser.urlencoded({extended: false}));
+//let urlEncodedBody = bodyParser.urlencoded({extended: false});
 //console.log('urlEncodedBody = ' + urlEncodedBody);
 
 app.post('/api/shorturl',function(req,res){
-  let shortURL = 'empty';
-  let originalURL = 'empty';
-  console.log('body parser (req._body) = '+ Object.values(req.body));
-/*    req.dns.lookup(host,function(req,res){
-    originalURL = host; 
-  }); */
-  
-  res.json({'original_url': originalURL, 'short_url': shortURL});
+  let host = Object.values(req.body);
+  let originalURL = host;
+  //  console.log('body parser (req._body) = '+ Object.values(req.body));
+  dns.lookup(host,function(err, address, family){
+     if (err)
+       res.json({'error': 'invalid url'});
+     else {
+      let shortURL = Math.floor(Math.random() * 100000).toString();
+      res.json({'original_url': originalURL, 'short_url': shortURL}); 
+     }
+  }); 
 });
 
 // Your first API endpoint 

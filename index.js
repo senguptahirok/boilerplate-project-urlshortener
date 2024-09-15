@@ -30,8 +30,9 @@ app.post('/api/shorturl',function(req,res){
   let host = Object.values(req.body);
   let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
+  console.log('host before dns.lookup = ' + host);
   dns.lookup(host,function(err, address, family){
-     console.log(' host = ' + host);
+     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});
      else {

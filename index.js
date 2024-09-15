@@ -11,7 +11,8 @@ const port = process.env.PORT || 3000;
   These are the steps that are being followed in this task:
   1. To parse the URL in POST function, using body-parser package. The body-parser needs to be installed in the root directory, if 
   it is not installed earlier. 'npm install body-parser' is the command for installation of body-parser package.
-  2. validate the url and return a short url using dsn.lookup method.
+  2. validate the url and return a short url using dns.lookup method. The dns package needs to be installed in the root directory, if
+  it is not installed earlier. 'npm install dns' is the command for installation of dns package.
 */
 app.use(cors());
       
@@ -30,6 +31,7 @@ app.post('/api/shorturl',function(req,res){
   let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   dns.lookup(host,function(err, address, family){
+     console.log(' host = ' + host);
      if (err)
        res.json({'error': 'invalid url'});
      else {

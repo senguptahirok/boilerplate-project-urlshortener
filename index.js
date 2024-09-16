@@ -39,15 +39,24 @@ app.post('/api/shorturl',function(req,res){
   // host = host.valueOf();
   // console.log('type of host 2 = ' + typeof(host));
   // console.log('host before lookup = ' + host);
-  console.log('host.hostname = ' + host.hostname);
+  // console.log('host.hostname = ' + host.hostname);
   dns.lookup(host.hostname,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});
      else {
        let shortURL = Math.floor(Math.random() * 100000).toString();
-       res.json({'original_url': host, 'short_url': shortURL}); 
+  //     res.json({'original_url': host, 'short_url': shortURL}); 
      }
+     let data = new Model({
+       'original_url': host,
+       'short_url': shortURL
+     })
+     data.save(function(err,data){
+       if (err) return console.error(err);
+     })
+     res.json({'original_url': host, 'short_url': shortURL});
+
   }); 
 });
 

@@ -34,6 +34,7 @@ app.post('/api/shorturl',function(req,res){
   host = host.toString()
              .valueOf();
   let { hostName } = new URL(host);
+  console.log('hostName = ' + hostName);
   //  host = host.valueOf();
   //  console.log('type of host 2 = ' + typeof(host));
   //  console.log('host before lookup = ' + host);

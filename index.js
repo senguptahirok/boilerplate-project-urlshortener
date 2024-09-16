@@ -39,6 +39,7 @@ app.post('/api/shorturl',function(req,res){
   // host = host.valueOf();
   // console.log('type of host 2 = ' + typeof(host));
   // console.log('host before lookup = ' + host);
+  console.log('host.hostname = ' + host.hostname);
   dns.lookup(host.hostname,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)

@@ -34,12 +34,12 @@ app.post('/api/shorturl',function(req,res){
   host = host.toString()
              .valueOf();
   // let { hostName } = new URL(host);
-  let hostName = host.hostname;
-  console.log('hostName = ' + hostName);
-  //  host = host.valueOf();
-  //  console.log('type of host 2 = ' + typeof(host));
-  //  console.log('host before lookup = ' + host);
-  dns.lookup(hostName,function(err, address, family){
+  // let hostName = host.hostname;
+  // console.log('hostName = ' + hostName);
+  // host = host.valueOf();
+  // console.log('type of host 2 = ' + typeof(host));
+  // console.log('host before lookup = ' + host);
+  dns.lookup(host.hostname,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});

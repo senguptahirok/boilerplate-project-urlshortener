@@ -46,17 +46,8 @@ app.post('/api/shorturl',function(req,res){
        res.json({'error': 'invalid url'});
      else {
        let shortURL = Math.floor(Math.random() * 100000).toString();
-  //     res.json({'original_url': host, 'short_url': shortURL}); 
+       res.json({'original_url': host, 'short_url': shortURL}); 
      }
-     let data = new Model({
-       'original_url': host,
-       'short_url': shortURL
-     })
-     data.save(function(err,data){
-       if (err) return console.error(err);
-     })
-     res.json({'original_url': host, 'short_url': shortURL});
-
   }); 
 });
 

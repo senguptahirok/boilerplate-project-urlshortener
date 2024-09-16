@@ -38,7 +38,8 @@ app.post('/api/shorturl',function(req,res){
      if (err)
        res.json({'error': 'invalid url'});
      else {
-      let shortURL = Math.floor(Math.random() * 100000).toString();
+      //let shortURL = Math.floor(Math.random() * 100000).toString();
+      let shortURL = 'www.hiroksen.in';
       res.json({'original_url': originalURL, 'short_url': shortURL}); 
      }
   }); 

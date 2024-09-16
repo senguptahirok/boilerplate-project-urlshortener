@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //console.log('urlEncodedBody = ' + urlEncodedBody);
 
 app.post('/api/shorturl',function(req,res){
+  console.log('req.body = ' + req.body);
   let host = Object.values(req.body);
   let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));

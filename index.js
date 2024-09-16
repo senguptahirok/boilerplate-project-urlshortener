@@ -27,22 +27,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 //console.log('urlEncodedBody = ' + urlEncodedBody);
 
 app.post('/api/shorturl',function(req,res){
-  console.log('req.body = ' + req.body);
   let host = Object.values(req.body);
-  let originalURL = host;
+  //  let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
-  console.log('type of host 1 = ' + typeof(host));
-  host = host.toString();
-  console.log('type of host 2 = ' + typeof(host));
-  console.log('host before lookup = ' + host);
+  //  console.log('type of host 1 = ' + typeof(host));
+  //  host = host.toString();
+  host = host.valueOf();
+  //  console.log('type of host 2 = ' + typeof(host));
+  //  console.log('host before lookup = ' + host);
   dns.lookup(host,function(err, address, family){
-     console.log('host (inside dns.lookup) = ' + host);
+  //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});
      else {
-      //let shortURL = Math.floor(Math.random() * 100000).toString();
-      let shortURL = 'www.hiroksen.in';
-      res.json({'original_url': originalURL, 'short_url': shortURL}); 
+       let shortURL = Math.floor(Math.random() * 100000).toString();
+       res.json({'original_url': host, 'short_url': shortURL}); 
      }
   }); 
 });

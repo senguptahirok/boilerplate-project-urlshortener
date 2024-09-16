@@ -31,11 +31,13 @@ app.post('/api/shorturl',function(req,res){
   //  let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   //  console.log('type of host 1 = ' + typeof(host));
-  host = host.toString();
-  host = host.valueOf();
+  host = host.toString()
+             .valueOf();
+  let { hostName } = new URL(host);
+  //  host = host.valueOf();
   //  console.log('type of host 2 = ' + typeof(host));
   //  console.log('host before lookup = ' + host);
-  dns.lookup(host,function(err, address, family){
+  dns.lookup(hostName,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});

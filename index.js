@@ -31,8 +31,9 @@ app.post('/api/shorturl',function(req,res){
   //  let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   //  console.log('type of host 1 = ' + typeof(host));
-  host = host.toString()
-             .valueOf();
+  host = host.toString().valueOf();
+  // let url = new URL(host);
+  // let hostName = url.hostname;
   // let { hostName } = new URL(host);
   // let hostName = host.hostname;
   // console.log('hostName = ' + hostName);
@@ -40,7 +41,7 @@ app.post('/api/shorturl',function(req,res){
   // console.log('type of host 2 = ' + typeof(host));
   // console.log('host before lookup = ' + host);
   // console.log('host.hostname = ' + host.hostname);
-  dns.lookup(host.hostname,function(err, address, family){
+  dns.lookup(hostName,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});

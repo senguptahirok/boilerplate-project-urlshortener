@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const dns = require('dns');
+const parseURI = require('parseuri');
 const cors = require('cors');
 const app = express();
 
@@ -32,6 +33,8 @@ app.post('/api/shorturl',function(req,res){
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   //  console.log('type of host 1 = ' + typeof(host));
   host = host.toString().valueOf();
+  let uri = parseURI(host);
+  console.log('uri.hostname = ' + uri.hostname);
   // let url = new URL(host);
   // let hostName = url.hostname;
   // let { hostName } = new URL(host);
@@ -41,7 +44,7 @@ app.post('/api/shorturl',function(req,res){
   // console.log('type of host 2 = ' + typeof(host));
   // console.log('host before lookup = ' + host);
   // console.log('host.hostname = ' + host.hostname);
-  dns.lookup(hostName,function(err, address, family){
+  dns.lookup(uri.hostname,function(err, address, family){
   //     console.log('host (inside dns.lookup) = ' + host);
      if (err)
        res.json({'error': 'invalid url'});

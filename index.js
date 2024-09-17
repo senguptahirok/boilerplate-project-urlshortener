@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const dns = require('dns');
-const parseURI = require('parse-uri');
+// const parseURI = require('parse-uri');
 const cors = require('cors');
 const app = express();
 

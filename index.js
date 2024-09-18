@@ -33,6 +33,7 @@ app.post('/api/shorturl',function(req,res){
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   //  console.log('type of host 1 = ' + typeof(host));
   host01 = host01.toString().valueOf();
+  console.log('hostname = ' + hostname);
   //  let uri = parseURI(host01);
   // console.log('uri.hostname = ' + uri.hostname);
   // let url = new URL(host);

@@ -60,7 +60,7 @@ app.post('/api/shorturl',function(req,res){
        let shortURL = Math.floor(Math.random() * 100000).toString();
        let urlmap = {host01: shortURL};
   //     res.json({'original_url': host01, 'short_url': shortURL}); 
-       res.json({'original_url': host01, 'short_url': urlmap[host01]}); 
+       res.json({'original_url': host01, 'short_url': urlmap.host01}); 
      }
   }); 
 });

@@ -58,10 +58,9 @@ app.post('/api/shorturl',function(req,res){
        res.json({'error': 'invalid url'});
      else {
        let shortURL = Math.floor(Math.random() * 100000).toString();
-       let urlArray = [];
-       urlArray.push(shortURL);
+       let urlmap = {host01: shortURL};
   //     res.json({'original_url': host01, 'short_url': shortURL}); 
-       res.json({'original_url': host01, 'short_url': urlArray.indexOf(shortURL)}); 
+       res.json({'original_url': host01, 'short_url': urlmap[host01]}); 
      }
   }); 
 });

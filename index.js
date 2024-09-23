@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //let urlEncodedBody = bodyParser.urlencoded({extended: false});
 //console.log('urlEncodedBody = ' + urlEncodedBody);
 
+let urlmap = {};
 app.post('/api/shorturl',function(req,res){
   let host01 = Object.values(req.body);
   //  let originalURL = host;
@@ -58,11 +59,17 @@ app.post('/api/shorturl',function(req,res){
        res.json({'error': 'invalid url'});
      else {
        let shortURL = Math.floor(Math.random() * 100000).toString();
-       let urlmap = {host01: shortURL};
+  //     let urlmap = {host01: shortURL};
   //     res.json({'original_url': host01, 'short_url': shortURL}); 
-       res.json({'original_url': host01, 'short_url': urlmap.host01}); 
+       urlmap = {host01: shortURL};
+       res.json({'original_url': host01, 'short_url': shortURL}); 
      }
   }); 
+});
+
+let shortURLPath = __dirname + '/api/shorturl/' + shortURL;
+app.get('/',function(req,res){
+  res.sendFile(shortURLPath);
 });
 
 // Your first API endpoint 

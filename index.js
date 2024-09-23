@@ -73,8 +73,8 @@ app.post('/api/shorturl',function(req,res){
 /* app.get('/api/shorturl/' + shortURL,function(req,res){
   res.send(host01);
 });*/
-app.get('/api/shorturl/' + shortURL, function(req,res){
-  res.sendFile(host01);
+app.get('/api/shorturl/:shortURL', function(req,res){
+  res.send(host01);
 });
 
 

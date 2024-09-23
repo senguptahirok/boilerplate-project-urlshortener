@@ -73,7 +73,9 @@ app.post('/api/shorturl',function(req,res){
 /* app.get('/api/shorturl/' + shortURL,function(req,res){
   res.send(host01);
 });*/
-app.use('/api/shorturl/' + shortURL,express.static(host01));
+app.post('/api/shorturl/' + shortURL, function(req,res){
+  res.sendFile(host01);
+});
 
 
 // Your first API endpoint 

@@ -70,9 +70,11 @@ app.post('/api/shorturl',function(req,res){
 });
 
 // let shortURLPath = __dirname + '/api/shorturl/' + shortURL;
-app.get('/api/shorturl/' + shortURL,function(req,res){
+/* app.get('/api/shorturl/' + shortURL,function(req,res){
   res.send(host01);
-});
+});*/
+app.use('/api/shorturl/' + shortURL,express.static(host01));
+
 
 // Your first API endpoint 
 app.get('/api/hello', function(req, res) {

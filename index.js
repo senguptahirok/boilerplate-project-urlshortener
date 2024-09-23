@@ -30,10 +30,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 //let urlEncodedBody = bodyParser.urlencoded({extended: false});
 //console.log('urlEncodedBody = ' + urlEncodedBody);
 
-let urlmap = {};
-let shortURL = ' ';
+// let urlmap = {};
+let shortURL = '';
+let host01 = '';
 app.post('/api/shorturl',function(req,res){
-  let host01 = Object.values(req.body);
+  host01 = Object.values(req.body);
   //  let originalURL = host;
   //  console.log('body parser (req._body) = '+ Object.values(req.body));
   //  console.log('type of host 1 = ' + typeof(host));
@@ -62,15 +63,15 @@ app.post('/api/shorturl',function(req,res){
        shortURL = Math.floor(Math.random() * 100000).toString();
   //     let urlmap = {host01: shortURL};
   //     res.json({'original_url': host01, 'short_url': shortURL}); 
-       urlmap = {host01: shortURL};
+  //     urlmap = {host01: shortURL};
        res.json({'original_url': host01, 'short_url': shortURL}); 
      }
   }); 
 });
 
-let shortURLPath = __dirname + '/api/shorturl/' + shortURL;
-app.get('/',function(req,res){
-  res.sendFile(shortURLPath);
+// let shortURLPath = __dirname + '/api/shorturl/' + shortURL;
+app.get('/api/shorturl/' + shortURL,function(req,res){
+  res.send(host01);
 });
 
 // Your first API endpoint 

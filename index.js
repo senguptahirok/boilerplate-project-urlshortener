@@ -74,7 +74,7 @@ app.post('/api/shorturl',function(req,res){
   res.send(host01);
 });*/
 app.get('/api/shorturl/:shortURL', function(req,res){
-  res.send(window.Location.assign(host01));
+  res.redirect(host01);
 });
 
 

@@ -68,7 +68,7 @@ app.post('/api/shorturl',function(req,res){
      }
   }); 
 });
-
+/* adding a comment just for test deployment */
 // let shortURLPath = __dirname + '/api/shorturl/' + shortURL;
 /* app.get('/api/shorturl/' + shortURL,function(req,res){
   res.send(host01);
